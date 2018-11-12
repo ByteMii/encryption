@@ -59,7 +59,6 @@ class encryption {
 					string[i++] = char(rand()%10+48);
 				}				
 			}
-			
 		}
 		
 		void decrypt()
