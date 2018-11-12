@@ -1,3 +1,6 @@
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>   
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
@@ -5,8 +8,7 @@
 
 using namespace std;
 
-class encryption
-{
+class encryption {
 	private:
 		char string[1000] ;
 		char key[1000] ;
@@ -81,6 +83,7 @@ class encryption
 
 int main()
 {
+/*
 	char c[1000] ;
 	cout << "String za enkripciju: " ;
 	gets(c);
@@ -92,5 +95,38 @@ int main()
 	string.encrypt();
 	string.print();
 	string.decrypt();
-	string.print();
+	string.print();*/
+
+
+
+	int option;
+	char word[100];
+	printf("Enter phrase for encryption:");
+	gets(word);
+	encryption object1(word);
+	while(1){
+
+		printf("Choose option:\n");
+		printf("(1) Encrypt\n");
+		printf("(2) Decrypt\n");
+		printf("(3) Add key\n");
+		printf("(4) Print word\n");
+		printf("(0) Exit\n");
+		printf("Option:");
+		scanf("%d",&option);
+		if(option==4)object1.print();
+		if(option==3){
+			printf("Enter number:");
+			int key;
+			scanf("%d",&key);
+			object1.add_key(key);
+		}
+		if(option==1)object1.encrypt();
+		if(option==2)object1.decrypt();
+
+		std::this_thread::sleep_for (std::chrono::seconds(1));
+		for(int i=0;i<100;i++)printf("\n");
+		if(option==0)break;
+	}
+	return 0;
 }
