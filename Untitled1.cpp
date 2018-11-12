@@ -10,22 +10,26 @@ class encryption
 	private:
 		char string[1000] ;
 		char key[1000] ;
+		
 		void copy_string(char *s)
 		{
 			for( int i = 0 ; i < strlen(s); ++i)
 			string[i] = s[i] ;
 		}
+		
 		void copy_key(char *s)
 		{
 			for( int i = 0 ; i < strlen(s); ++i)
 			key[i] = s[i] ;
 		}
+		
 		void shift_r(int i)
 		{
 			string[strlen(string)+2]=NULL;
 			for(int j = strlen(string)+1; j >= i ; j--)
 			string[j+1] = string[j] ;
 		}
+		
 		void shift_l(int i)
 		{
 			for(int j = i; j <strlen(string)-1; j++)
